@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  //Used to make a connect with the WebAPI and we add "api" after / because in WebAPI any GET method come after /api
+  //apiURL:'https://localhost:44339/api'
+  withUrl: ("https://localhost:44339/api")
 };
 
 /*

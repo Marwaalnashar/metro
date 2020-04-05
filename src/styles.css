@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.jumbotron
+{
+   
+    background-color: #ffffff;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+ .navbar
+{
+background-color: #252f31;
+color: #FFF;
+overflow: hidden;
+margin-bottom: 30px;
+position: absolute;
+width: 100%;
+top: 0;
+left: 0;
+}
+
+ .navbar h2{
+
+    float: left;
+    text-transform: uppercase;
+}
+ .navbar h2 span {
+
+    color: #2dd478;
+    
+}
+
+
+ .navbar ul{
+
+    list-style: none;
+    padding-left: 0;
+    overflow: hidden;
+    float: right;
+}
+
+ .navbar ul li{
+
+    display: inline-block;
+    padding: 10px;
+}
+.navbar ul li a {
+
+    color: #FFF;
+}
+
+.content {
+
+    margin-top: 100px;
+}
+
+.form-control , .input-group-text{
+
+    border: 1px solid #4d4dff;
+}
+
+table.table-hover table tr:hover{
+
+    cursor: pointer;
+}
+

@@ -1,0 +1,96 @@
+
+<form #form="ngForm" autocomplete="off" *ngIf="service.formData" (submit)="onSubmit(form)">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label>Booking No. </label>
+                <!-- this div used to make prepend next to the input by put the input inside div-->
+                <div class="input-group">
+                    <!-- this called prepend in bootstrap -->
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input name="BookingNo" #BookingNo="ngModel" [(ngModel)]="service.formData.BookingNo"
+                        class="form-control" readonly>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Employee</label>
+                <select name="EmployeeID" #EmployeeID="ngModel" [(ngModel)]="service.formData.EmployeeID"
+                    class="form-control"  [class.is-invalid]="!isValid && service.formData.EmployeeID==0 ">
+                    <option value="0">-select-</option>
+                    <option *ngFor="let item of employeeList" value="{{item.EmployeeID}}">{{item.Name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Payment Method</label>
+                <select name="PMethod" #PMethod="ngModel" [(ngModel)]="service.formData.PMethod" class="form-control">
+                    <option value="">-select-</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Card">Card</option>
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <label>Grand Total</label>
+                <!-- this div used to make prepend next to the input by put the input inside div-->
+                <div class="input-group">
+                    <!-- this called prepend in bootstrap -->
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">$</div>
+                    </div>
+                    <input name="GTotal" #GTotal="ngModel" [(ngModel)]="service.formData.GTotal" class="form-control"
+                        readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tickets Directions table -->
+    <table class="table table-borderless">
+        <thead class="thead-light">
+
+            <th>Stations</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total</th>
+            <th class="text-center">
+                <a class="btn btn-raised btn-primary text-white" (click)="openDialog(null,service.formData.BookingID)"><i class="fa fa-plus"></i> Book
+                    Ticket</a>
+            </th>
+        </thead>
+        <tbody>
+            <tr *ngIf="service.bookingTickets.length==0" [class.text-danger]="!isValid && service.bookingTickets.length==0">
+                <td class="font-italic text-center" colspan="5">
+                    No Tickets selected for this booking
+                </td>
+            </tr>
+
+            <tr *ngFor="let item of service.bookingTickets; let i = index;">
+                <td>{{item.Direction}}</td>
+                <td>{{item.Price}}</td>
+                <td>{{item.Quantity}}</td>
+                <td>{{item.Total}}</td>
+                <td class="text-center">
+                    <a class="btn btn-sm btn-info text-white" (click)= "openDialog(i,service.formData.BookingID)"><i class="fa fa-pencil"></i></a>
+                    <a class="btn btn-sm btn-danger text-white ml-1" (click)= "deleteTicket(item.BookingTicketID,i)"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+    <div class="form-group">
+        <button type="submit"  class="btn btn-success"> <i class="fa fa-database"></i> Submit</button>
+    </div>
+</form>

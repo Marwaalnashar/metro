@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-fluid">
+
+  <div class="navbar">
+    <div class="container">
+      <h2><img src="/assets/img/logo.png" alt="photo" style="width: 65px;height: 60px"> Metro<span> Stations</span></h2>
+      <ul>
+        <li>
+          <a class="nav-link" routerLink="/book">Booking</a>
+        </li>
+
+        <li>
+          <a class="nav-link" routerLink="/bookinglist">Booking List</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- <h3 class="display-4 text-center"> <img src="/assets/img/logo.png" alt="photo" style="width: 85px;height: 80px"> Metro Stations </h3> -->
+  <div class="container content">
+
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <router-outlet></router-outlet>
+
+      </div>
+    </div>
+  </div>
+</div>

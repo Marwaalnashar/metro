@@ -1,0 +1,52 @@
+<h2> Booking Metro Ticket </h2>
+<hr>
+<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
+    <div class="form-group">
+        <select name="TicketID" #TicketID="ngModel" [(ngModel)]="formData.TicketID" class="form-control"
+            (change)="updatePrice($event.target)"
+            [class.is-invalid]="!isValid && formData.TicketID==0 && TicketID.touched">
+            <option value="0">-select-</option>
+            <option *ngFor="let item of ticketList" value="{{item.TicketID}}">{{item.Direction}}</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Price</label>
+            <!-- this div used to make prepend next to the input by put the input inside div-->
+            <div class="input-group">
+                <!-- this called prepend in bootstrap -->
+                <div class="input-group-prepend">
+                    <div class="input-group-text">$</div>
+                </div>
+                <input name="Price" #Price="ngModel" [(ngModel)]="formData.Price" class="form-control" readonly>
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-6">
+            <label>Quantity</label>
+            <input name="Quantity" #Quantity="ngModel" [(ngModel)]="formData.Quantity" class="form-control"
+                (keyup)="updateTotal()" [class.is-invalid]="!isValid && formData.Quantity==0 ">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Total</label>
+        <!-- this div used to make prepend next to the input by put the input inside div-->
+        <div class="input-group">
+            <!-- this called prepend in bootstrap -->
+            <div class="input-group-prepend">
+                <div class="input-group-text">$</div>
+            </div>
+            <input name="Total" #Price="ngModel" [(ngModel)]="formData.Total" class="form-control" readonly>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn  btn-success" > <i class="fa fa-database"></i>
+            Submit</button>
+        <button type="button" name="closepopup" class="btn btn-danger ml-1" 
+            [mat-dialog-close]> <i class="fa fa-close"></i> Close</button>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+
+<table class="table table-hover">
+    <thead class="thead-light">
+      <th>#Order No.</th>
+      <th>Employee</th>
+      <th>P. Method</th>
+      <th>G. Total</th>
+      <th>
+        <a class="btn btn-outline-success" routerLink="/book"><i class="fa fa-plus-square"></i> Create New</a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of bookingList">
+        <th >{{item.BookingNo}}</th>
+        <td >{{item.employee}}</td>
+        <td >{{item.PMethod}}</td>
+        <td >{{item.GTotal}}</td>
+        <td>
+            <!-- <a class="btn text-danger" (click)="onOrderDelete(item.OrderID)"><i class="fa fa-trash fa-lg"></i></a> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
